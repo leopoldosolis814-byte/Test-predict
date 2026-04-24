@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validadora IA - LATAM</title>
+    <script src="https://tailwindcss.com"></script>
+    <style>
+        .gradient-bg { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
+        .agent-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+    </style>
+</head>
+<body class="gradient-bg text-white min-h-screen font-sans p-8">
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="max-w-4xl mx-auto">
+        
+        <!-- HEADER -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-cyan-400 mb-2">Validadora de Ideas</h1>
+            <p class="text-slate-400">Análisis multi-agente en tiempo real para LATAM</p>
+        </header>
+
+        <!-- FASE 1: SIMULACIÓN DE AGENTES -->
+        <div id="fase1" class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 shadow-xl mb-8">
+            <h2 class="text-xl font-semibold mb-6 flex items-center">
+                <span class="mr-2">🔍</span> Desplegando 24 Agentes Especializados...
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="agentes-lista">
+                <!-- Agentes dinámicos -->
+                <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-700 flex justify-between items-center">
+                    <span>🕵️ Agente Reddit (Pain Points)</span>
+                    <span class="text-cyan-400 text-xs agent-pulse">Buscando...</span>
+                </div>
+                <div class="bg-slate-900/50 p-3 rounded-lg border border-slate-700 flex justify-between items-center">
+                    <span>📊 Agente Mercado (LATAM)</span>
+                    <span class="text-slate-500 text-xs">Esperando...</span>
+                </div>
+            </div>
+
+            <button onclick="simularAnalisis()" id="btn-validar" class="w-full mt-8 bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 rounded-xl transition-all">
+                Iniciar Validación de Idea
+            </button>
+        </div>
+
+        <!-- FASE 2: CONFIGURACIÓN DEL SOCIO (Oculta al inicio) -->
+        <div id="fase2" class="hidden bg-slate-800/50 p-8 rounded-2xl border border-cyan-500/30 shadow-2xl shadow-cyan-500/10">
+            <h2 class="text-2xl font-bold text-white mb-2">¡Validación Exitosa! 🚦</h2>
+            <p class="text-slate-400 mb-8">La idea tiene potencial. Ahora, configurá a tu Socio de Ejecución.</p>
+
+            <div class="space-y-6">
+                <!-- Nombre -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Nombre de tu Socio</label>
+                    <input type="text" placeholder="Ej: TARS" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white focus:ring-2 focus:ring-cyan-500 outline-none">
+                </div>
+
+                <!-- Sliders -->
+                <div>
+                    <div class="flex justify-between mb-2">
+                        <label class="text-sm font-medium text-slate-300">Nivel de Honestidad (Sinceridad)</label>
+                        <span id="val-honestidad" class="text-cyan-400 font-bold">50%</span>
+                    </div>
+                    <input type="range" oninput="document.getElementById('val-honestidad').innerText = this.value + '%'" class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500">
+                </div>
+
+                <!-- Tono Regional -->
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 mb-2">Tono Regional</label>
+                    <select class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-white outline-none">
+                        <option>Rioplatense (Che, vos)</option>
+                        <option>Mexicano (Pinche, güey)</option>
+                        <option>Andino (Tú, parce)</option>
+                        <option>Neutral (Usted)</option>
+                    </select>
+                </div>
+
+                <button class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-4 rounded-xl shadow-lg transition-all transform hover:scale-[1.02]">
+                    Activar Socio y Empezar Roadmap 🚀
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function simularAnalisis() {
+            const btn = document.getElementById('btn-validar');
+            btn.disabled = true;
+            btn.innerText = "Analizando...";
+            
+            // Simular que los agentes terminan
+            setTimeout(() => {
+                document.getElementById('fase1').classList.add('opacity-50');
+                document.getElementById('fase2').classList.remove('hidden');
+                document.getElementById('fase2').scrollIntoView({ behavior: 'smooth' });
+            }, 2500);
+        }
+    </script>
+</body>
+                      </html>
+                      
